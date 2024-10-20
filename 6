@@ -1,0 +1,16 @@
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner in = new Scanner(System.in);
+        int A = in.nextInt();
+        int B = in.nextInt();
+        while (B != 0) {
+            int sum = A ^ B;
+            int c = (A & B) << 1;
+            A = sum;
+            B = c;
+        }
+        System.out.println(A);
+    }
+}
