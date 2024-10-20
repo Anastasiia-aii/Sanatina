@@ -1,0 +1,33 @@
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner in = new Scanner(System.in);
+        String s = in.next();
+        int[] c = new int[10];
+        for (int i = 0; i < s.length(); i++) {
+            c[s.charAt(i) - '0']++;
+        }
+        rec(c, "", s.length());
+    }
+
+    public static void rec(int[] count, String result, int perv) {
+        if (perv == 0) {
+            if (result.charAt(0) != '0') {
+                System.out.println(result);
+            }
+            return;
+        }
+        
+        for (int i = 0; i < 10; i++) {
+            if (count[i] > 0) {
+                if ( i != 0 || result.length() != 0) {
+                    count[i]--;
+                    
+                    rec(count, result + i, perv - 1);
+                    count[i]++;
+                }
+            }
+        }
+    }
+}
